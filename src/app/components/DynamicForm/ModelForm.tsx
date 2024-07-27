@@ -13,7 +13,7 @@ const ModelForm = ({ model,setLoading ,setOutputData}: { model: DataItem,setLoad
   const [formData, setFormData] = useState(defaultFormData);
 
   const handleChange = (id: string, value: string | number | boolean) => {
-    setFormData((prevData) => ({
+    setFormData((prevData:any) => ({
       ...prevData,
       [id]: value,
     }));
