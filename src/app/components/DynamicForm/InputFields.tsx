@@ -9,7 +9,7 @@ const InputField = ({
   handleChange: (id: string, value: string | number | boolean) => void;
   formData: any;
 }) => {
-  const { type, id, title, required, min, max } = param;
+  const { type, id, title, required, min, max,default_value } = param;
 
   if (type === "string") {
     return (
@@ -39,12 +39,13 @@ const InputField = ({
             <div>to add a new line</div>
           </div>
         </div>
-        <input
-          type="text"
+        <textarea
+        rows={4}
           id={id}
           className="mt-2 w-full p-2.5 bg-white border border-black border-solid min-h-[42px] max-md:max-w-full"
           required={required}
-          onChange={(e) => handleChange(id, e.target.value)}
+            defaultValue={default_value}
+            onChange={(e) => handleChange(id, e.target.value)}
         />
       </div>
     );
@@ -75,20 +76,10 @@ const InputField = ({
             min={min}
             max={max}
             type="number"
-            value={formData[id] || 0}
+            value={formData[id] || default_value}
             onChange={(e) => handleChange(id, parseFloat(e.target.value))}
-            className="justify-center p-2.5 bg-white border border-black border-solid"
-          />
-
-          <input
-            className="w-full"
-            type="range"
-            id={id}
-            min={min}
-            max={max}
-            onChange={(e) => handleChange(id, parseFloat(e.target.value))}
-          />
-        </div>
+            className=" w-full justify-center p-2.5 bg-white border border-black border-solid"
+          />        </div>
       </div>
     );
   } else if (type === "number") {
@@ -119,7 +110,7 @@ const InputField = ({
             max={max}
             type="number"
             step={0.01}
-            value={formData[id] || 0.0}
+            value={formData[id] || default_value}
             onChange={(e) => handleChange(id, parseFloat(e.target.value))}
             className="justify-center p-2.5 bg-white border border-black border-solid"
           />
@@ -131,6 +122,7 @@ const InputField = ({
             min={min}
             max={max}
             step={0.01}
+            defaultValue={default_value}
             onChange={(e) => handleChange(id, parseFloat(e.target.value))}
           />
         </div>

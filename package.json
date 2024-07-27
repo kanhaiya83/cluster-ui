@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@wavesurfer/react": "^1.0.7",
+    "axios": "^1.7.2",
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-json-formatter": "^0.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

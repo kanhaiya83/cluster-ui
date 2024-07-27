@@ -3,51 +3,115 @@ import { data } from "@/app/utils/data";
 import { formatNumber } from "@/app/utils/helper";
 import Link from "next/link";
 import ModelForm from "@/app/components/DynamicForm/ModelForm";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, ReactNode } from "react";
 import AudioWave from "@/app/components/AudioWave";
+import Image from "next/image";
+import JsonFormatter from "react-json-formatter";
+import MetricsContainer from "@/app/components/MetricsContainer";
+import Loader from "@/app/components/Loader";
 
+interface OutputData {
+  completed_at: string;
+  created_at: string;
+  error: string | null;
+  input: {
+    top_p: number;
+    prompt: string;
+    temperature: number;
+  };
+  metrics: {
+    total_time: number;
+    input_token_count?: number;
+    tokens_per_second?: number;
+    output_token_count?: number;
+    predict_time?: number;
+    time_to_first_token?: number;
+  };
+  output: string[];
+  started_at: string;
+  status: string;
+}
+
+const defaultData = {
+  completed_at: "2024-05-03T13:45:15.445073Z",
+  created_at: "2024-05-03T13:45:13.788000Z",
+  error: null,
+  input: {
+    top_p: 0.95,
+    prompt:
+      "Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+    temperature: 0.7,
+  },
+  metrics: {
+    total_time: 1.657073,
+    input_token_count: 39,
+    tokens_per_second: 92.80206135476371,
+    output_token_count: 149,
+    predict_time: 1.652461,
+    time_to_first_token: 0.060728942999999994,
+  },
+  output: [
+    // "https://pbxt.replicate.delivery/YXbcLudoHBIYHV6L0HbcTx5iRzLFMwygLr3vhGpZI35caXbE/out-0.png",
+    `The number of parameters in a neural network can impact its speed, but it's not the only factor.
+
+    In general, a larger number of parameters can lead to:
+    
+    1. Increased computational complexity: More parameters mean more calculations are required to process the data.
+    2. Increased memory requirements: Larger models require more memory to store their parameters, which can impact system performance.
+    
+    However, it's worth noting that the relationship between the number of parameters and speed is not always linear. Other factors, such as:
+    
+    * Model architecture
+    * Optimizer choice
+    * Hyperparameter tuning
+    
+    can also impact the speed of a neural network.
+    
+    In the case of Johnny and Tommy, it's difficult to say which one's model will be faster without more information about the models themselves.`,
+  ],
+  started_at: "2024-05-03T13:45:13.792612Z",
+  status: "succeeded",
+};
 const page = ({ params }: { params: { owner: string; model: string } }) => {
   const model = data.find((obj) => {
     return obj.owner === params.owner && obj.title === params.model;
   });
 
-  const [activeTab, setActiveTab] = useState("preview");
-
   const [resData, setResData] = useState<any>();
   const [loading, setLoading] = useState(false);
-
+  const [activeTab, setActiveTab] = useState<"preview" | "json">("preview");
+  const [outputData, setOutputData] = useState<OutputData>(defaultData);
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const res = await fetch(`/api/${model?.title}`);
-      const data = await res.json();
-      setResData(data.data);
-      console.log(data.data);
-      setLoading(false);
-    };
-
-    fetchData();
+    // const fetchData = async () => {
+    //   setLoading(true);
+    //   const res = await fetch(`/api/${model?.title}`);
+    //   const data = await res.json();
+    //   setResData(data.data);
+    //   console.log(data.data);
+    //   setLoading(false);
+    // };
+    // fetchData();
   }, [model]);
-
+  const parsedOutput = outputData.output[0];
   return (
     <div className="px-24 mt-10">
-      <div className="flex gap-5 self-stretch pb-6 max-md:flex-wrap">
-        <div className="flex flex-col flex-1 px-5 max-md:max-w-full">
+      <div className="flex-1 flex gap-5 self-stretch pb-6 max-md:flex-wrap">
+        <div className="flex flex-col  px-5">
           <div className="flex gap-3 pr-20 max-md:flex-wrap max-md:pr-5">
-            <span className=" italic text-lg">f</span>
+            {/* <span className=" italic text-lg">f</span> */}
             <div className="flex gap-1.5 px-0.5">
-              <div className="text-3xl leading-10 underline text-zinc-500">
+              <span className="text-3xl leading-10 underline text-zinc-500">
                 {model?.owner}
-              </div>
+              </span>
               <div className="my-auto text-3xl leading-10 text-black">
                 <span className="text-zinc-500">/</span>
                 <span className="text-black"> {model?.title} </span>
               </div>
-              <img
+              {/* <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/5d419ff996c3308216dc52c39385496cbc6174731cbad452d90c95d2fd8e14bb?"
                 className="shrink-0 self-start w-4 aspect-square"
-              />
+              /> */}
             </div>
           </div>
           <div className="mt-1 text-base leading-6 text-black max-md:max-w-full">
@@ -70,14 +134,14 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
               />
               <div>{model?.private ? "Private" : "Public"}</div>
             </div>
-            <div className="flex gap-1.5 justify-center px-2.5 py-1 rounded-full shadow-sm bg-stone-50 leading-[145%] text-neutral-800">
+            {/* <div className="flex gap-1.5 justify-center px-2.5 py-1 rounded-full shadow-sm bg-stone-50 leading-[145%] text-neutral-800">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c8823030f40a601e342d0080fdefd424a3c3797e909175a0c1573a4924e7941?"
                 className="shrink-0 self-start w-4 aspect-[1.06]"
               />
               <div>{formatNumber(model?.total_runs || 0)} runs</div>
-            </div>
+            </div> */}
             <div className="flex gap-1.5 py-0.5 my-auto whitespace-nowrap leading-[146%]">
               <img
                 loading="lazy"
@@ -116,103 +180,113 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
             </div> */}
           </div>
         </div>
-        <div className="flex gap-2 justify-center px-3.5 py-2.5 my-auto text-base font-semibold leading-6 text-white border border-orange-700 border-solid bg-[linear-gradient(90deg,#EA2804_0%,#E54FE2_50%,#ED686C_100%)]">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2c59a5149c73a1fe0cd1553b9d5bbece64107a5b9a157d9c14435f45fa97ebb7?"
-            className="shrink-0 self-start w-4 aspect-square"
-          />
-          <div>Run with an API</div>
-        </div>
       </div>
 
-      <div className="flex w-full">
-        <div className="w-[50%]">
-          {model ? <ModelForm model={model} /> : <div>Model not found</div>}
+      <div className="flex">
+        <div className="flex-1 shrink-0">
+          {model ? (
+            <ModelForm model={model} setLoading={setLoading} setOutputData={setOutputData}/>
+          ) : (
+            <div>Model not found</div>
+          )}
         </div>
-        <div>
-          <div className="flex flex-col items-start self-stretch text-sm max-w-[847px]">
+        <div className="flex-1 shrink-0 max-w-[50%] pb-20">
+          <div className="flex flex-col  text-sm">
             <div className="self-stretch w-full text-2xl leading-8 text-black max-md:max-w-full">
               Output
             </div>
-            <div className="flex gap-5 self-stretch py-px pr-20 mt-2 text-center whitespace-nowrap border-b border-solid border-zinc-300 max-md:flex-wrap max-md:pr-5">
-              <div className="flex flex-col justify-center leading-[147%] text-neutral-800">
-                <div className="pt-2.5 pb-3 border-b-2 border-solid border-neutral-800">
-                  Preview
-                </div>
-                {/* <div className="w-full">
-                  {loading ? (
-                    "Loading..."
-                  ) : (
-                    <video autoPlay loop src={resData?.output[0]}></video>
-                    <AudioWave link={resData?.output} />
-                  )}
-                </div> */}
-              </div>
-              <div className="justify-center py-3 leading-[145%] text-stone-500">
+            <div className="flex gap-5  py-px pr-20 mt-2 text-center border-b border-solid border-zinc-300 w-full">
+              <button
+                className={`pt-2.5 pb-3 ${
+                  activeTab == "preview"
+                    ? "border-b-2 border-solid border-neutral-800"
+                    : "text-stone-500 "
+                }`}
+                onClick={() => {
+                  setActiveTab("preview");
+                }}
+              >
+                Preview
+              </button>
+              <button
+                className={`justify-center py-3 leading-[145%] ${
+                  activeTab == "json"
+                    ? "border-b-2 border-solid border-neutral-800"
+                    : "text-stone-500 "
+                }`}
+                onClick={() => {
+                  setActiveTab("json");
+                }}
+              >
                 JSON
-              </div>
+              </button>
             </div>
-            {loading ? (
-              "Loading..."
-            ) : (
-              // <video autoPlay loop src={resData?.output[0]}></video>
-              <AudioWave link={resData?.output} />
-            )}
 
-            <div className="mt-4 leading-[145%] text-zinc-500">
-              Generated in
-            </div>
-            <div className="mt-1 text-base leading-6 text-neutral-800">
-              2.8 seconds
-            </div>
-            <div className="flex flex-wrap gap-2 content-start self-stretch pr-20 mt-4 text-base leading-6 text-neutral-800 max-md:pr-5">
-              <div className="flex gap-2 justify-center px-3.5 py-2.5 bg-white border border-solid border-neutral-800 leading-[153.6%]">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e59e2a7e62258e6cc57a89f4a9eb5a970041540a3adf36dce0a307532604348a?"
-                  className="shrink-0 my-auto w-4 aspect-square"
-                />
-                <div>Tweak it</div>
-              </div>
-              <div className="flex gap-2 justify-center px-3.5 py-2.5 whitespace-nowrap bg-white border border-solid border-neutral-800">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/ac3ac9363aab1c1577700550bbf6c0f3bdaf754b157c640129a32c6bb2ced41d?"
-                  className="shrink-0 my-auto w-4 aspect-square"
-                />
-                <div>Share</div>
-              </div>
-              <div className="flex gap-2 justify-center px-3.5 py-2.5 text-center whitespace-nowrap bg-white border border-solid border-neutral-800 leading-[155%]">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c111c7b67ac6e740881e47fe7fc166bbc98df303858d9ea82993ce446665481?"
-                  className="shrink-0 my-auto w-4 aspect-square"
-                />
-                <div>Download</div>
-              </div>
-              <div className="flex gap-2 justify-center px-3.5 py-2.5 whitespace-nowrap bg-white border border-solid border-neutral-800">
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/7b45400ed5e29404dd885cb694358e86176d7c426b8f8ba6ca4ce6b0c8eb242d?"
-                  className="shrink-0 my-auto w-4 aspect-square"
-                />
-                <div>Report</div>
-              </div>
-            </div>
-            <div className="flex gap-1.5 px-2 py-1 mt-4 text-center leading-[146%] text-zinc-500">
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/cd7cebe65ae14739a9c4ba482b09a7530fad59dec3a39310914ee1e167cdc6b4?"
-                className="shrink-0 my-auto w-4 aspect-square"
+            {loading ? (
+              <Loader />
+            ) : (
+              <OutputViewerContainer
+                activeTab={activeTab}
+                outputData={outputData}
               />
-              <div>Show logs</div>
-            </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
-
+const OutputViewerContainer = ({
+  activeTab,
+  outputData,
+}: {
+  activeTab: "json" | "preview";
+  outputData: OutputData;
+}) => {
+  return (
+    <>
+      {activeTab == "preview" ? (
+        <ParsedOutput output={outputData.output} />
+      ) : (
+        <div className="my-4">
+          <OutputWrapper>
+            <JsonFormatter json={JSON.stringify(outputData)} tabWith={4} />
+          </OutputWrapper>
+        </div>
+      )}
+      <MetricsContainer data={outputData.metrics} />
+    </>
+  );
+};
+const OutputWrapper = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="w-full bg-[#f0f0f0] p-3 max-h-[500px] overflow-y-auto text-base">
+      {children}
+    </div>
+  );
+};
+const ParsedOutput = ({ output }: { output: string[] }) => {
+  const outputEl = output[0];
+  if (outputEl.endsWith(".png")) {
+    return (
+      <div className="w-full my-4">
+        <img src={outputEl} alt="" className="w-full" />
+      </div>
+    );
+  }
+  if (outputEl.endsWith(".wav")) {
+    return (
+      <div className="w-full my-4">
+        <AudioWave link={outputEl} />
+      </div>
+    );
+  }
+  return (
+    <div className="my-4">
+      <OutputWrapper>
+        <p>{outputEl}</p>
+      </OutputWrapper>
+    </div>
+  );
+};
 export default page;
