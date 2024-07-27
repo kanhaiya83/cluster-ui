@@ -44,14 +44,13 @@ const defaultData = {
   },
   metrics: {
     total_time: 1.657073,
-    input_token_count: 39,
-    tokens_per_second: 92.80206135476371,
-    output_token_count: 149,
-    predict_time: 1.652461,
-    time_to_first_token: 0.060728942999999994,
+    // input_token_count: 39,
+    // tokens_per_second: 92.80206135476371,
+    // output_token_count: 149,
+    // predict_time: 1.652461,
+    // time_to_first_token: 0.060728942999999994,
   },
   output: [
-    // "https://pbxt.replicate.delivery/YXbcLudoHBIYHV6L0HbcTx5iRzLFMwygLr3vhGpZI35caXbE/out-0.png",
     `The number of parameters in a neural network can impact its speed, but it's not the only factor.
 
     In general, a larger number of parameters can lead to:
@@ -80,6 +79,9 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
   const [resData, setResData] = useState<any>();
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<"preview" | "json">("preview");
+  if (model?.default_output) {
+    defaultData.output = model?.default_output;
+  }
   const [outputData, setOutputData] = useState<OutputData>(defaultData);
   useEffect(() => {
     // const fetchData = async () => {
@@ -185,7 +187,11 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
       <div className="flex">
         <div className="flex-1 shrink-0">
           {model ? (
-            <ModelForm model={model} setLoading={setLoading} setOutputData={setOutputData}/>
+            <ModelForm
+              model={model}
+              setLoading={setLoading}
+              setOutputData={setOutputData}
+            />
           ) : (
             <div>Model not found</div>
           )}

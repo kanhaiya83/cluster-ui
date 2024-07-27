@@ -19,6 +19,7 @@ export type DataItem = {
   license_link: string;
   inputParams: InputParam[];
   inference_url: string;
+  default_output?:string[]
 };
 
 export const data: DataItem[] = [
@@ -176,6 +177,31 @@ export const data: DataItem[] = [
     ],
     inference_url:
       "https://inference.clusterprotocol.ai/generate/google/gemma-2b-it",
+  },
+  {
+    title: "sdxl",
+    owner: "stabilityai",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_featured_image/9065f9e3-40da-4742-8cb8-adfa8e794c0d/sdxl_cover.jpg",
+    github_link: "https://github.com/replicate/cog-sdxl",
+    license_link:
+      "https://github.com/Stability-AI/generative-models/blob/main/model_licenses/LICENSE-SDXL1.0",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"a bird on a tv",
+        required: true,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/stabilityai/stable-diffusion-xl-base-1.0",
+      default_output:[
+        "https://s3-ap-south-1.amazonaws.com/assets-clusterprotocol/outputA7M8fx8ugqAM.png"
+      ]
   },
   // {
   //     "title": "model-beta",
