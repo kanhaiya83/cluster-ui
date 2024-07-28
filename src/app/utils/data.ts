@@ -99,27 +99,38 @@ export const data: DataItem[] = [
         default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
         required: true,
       },
-      // {
-      //     "type": "string",
-      //     "id": "system_prompt",
-      //     "title": "System Prompt"
-      // },
-      // {
-      //     "type": "integer",
-      //     "id": "max_token",
-      //     "title": "Max Tokens",
-      //     "min": 1,
-      //     "max": 1000,
-      //     "default_value":256
-      // },
-      // {
-      //     "type": "number",
-      //     "id": "temperature",
-      //     "title": "Temperature",
-      //     "min": 0,
-      //     "max": 5,
-      //     "default_value":0.7
-      // }
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
     ],
     inference_url:
       "https://inference.clusterprotocol.ai/generate/meta-llama/Meta-Llama-Guard-2-8B",
