@@ -1,4 +1,5 @@
 import type { InputParam } from "@/app/utils/data";
+import FileInput from "./FileInput";
 
 const InputField = ({
   param,
@@ -128,7 +129,11 @@ const InputField = ({
         </div>
       </div>
     );
-  }
+  }else if (type === "file") {
+    return (
+     <FileInput param={param} handleChange={handleChange}/>
+    );
+  } 
   return null;
 };
 

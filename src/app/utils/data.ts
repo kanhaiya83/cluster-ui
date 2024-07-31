@@ -1,5 +1,5 @@
 export type InputParam = {
-  type: "string" | "integer" | "number";
+  type: "string" | "integer" | "number" | "file";
   id: string;
   title: string;
   required?: boolean;
@@ -213,6 +213,36 @@ export const data: DataItem[] = [
       default_output:[
         "https://s3-ap-south-1.amazonaws.com/assets-clusterprotocol/outputA7M8fx8ugqAM.png"
       ]
+  },
+
+  {
+    title: "moondream2",
+    owner: "gvikhyatk",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_featured_image/dc0dc539-f592-4c34-b24f-2d112f742975/moondream2.png",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Describe the image",
+        required: true,
+      },
+      {
+        type: "file",
+        id: "image",
+        title: "Your Image",
+        required: true,
+      },
+
+    ],
+    inference_url:
+      // "http://localhost:8000/generate/lucataco/moondream2",
+      "https://inference.clusterprotocol.ai/generate/lucataco/moondream2",
   },
   // {
   //     "title": "model-beta",
