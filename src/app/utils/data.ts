@@ -6,6 +6,7 @@ export type InputParam = {
   min?: number;
   max?: number;
   default_value?: number | string;
+  readonly?:boolean
 };
 
 export type DataItem = {
@@ -579,13 +580,14 @@ export const data: DataItem[] = [
     github_link: "https://github.com/chenxwh/cog-gemma",
     license_link: "https://huggingface.co/models?license=license%3Aother",
     inputParams: [
-      // {
-      //   type: "string",
-      //   id: "prompt",
-      //   title: "Your Prompt",
-      //   default_value:"Describe the image",
-      //   required: true,
-      // },
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Caption image",
+        required: true,
+        readonly:true
+      },
       {
         type: "file",
         id: "image",

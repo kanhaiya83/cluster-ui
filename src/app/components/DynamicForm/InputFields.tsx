@@ -10,7 +10,7 @@ const InputField = ({
   handleChange: (id: string, value: string | number | boolean) => void;
   formData: any;
 }) => {
-  const { type, id, title, required, min, max,default_value } = param;
+  const { type, id, title, required, min, max,default_value,readonly } = param;
 
   if (type === "string") {
     return (
@@ -47,6 +47,7 @@ const InputField = ({
           required={required}
             defaultValue={default_value}
             onChange={(e) => handleChange(id, e.target.value)}
+            readOnly={readonly}
         />
       </div>
     );
