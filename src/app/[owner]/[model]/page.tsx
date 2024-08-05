@@ -93,6 +93,7 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
     //   setLoading(false);
     // };
     // fetchData();
+    setOutputData(defaultData)
   }, [model]);
   const parsedOutput = outputData.output[0];
   return (
