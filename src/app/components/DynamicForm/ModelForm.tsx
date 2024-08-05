@@ -21,12 +21,17 @@ const ModelForm = ({ model,setLoading ,setOutputData}: { model: DataItem,setLoad
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    try{console.log(formData);
     setLoading(true)
     const res = await axios.post(model.inference_url,formData)
     console.log(res.data)
     setOutputData(res.data)
-    setLoading(false)
+    setLoading(false)}
+    catch(e){
+      console.log(e)
+      alert("Some error occurred")
+      setLoading(false)
+    }
 
   };
 

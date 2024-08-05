@@ -16,7 +16,8 @@ const AudioWave = ({ link }: { link: string }) => {
 
   return (
     <>
-      <WavesurferPlayer
+     <div className="border border-[#c4c4c4]  rounded-lg overflow-hidden p-1">
+     <WavesurferPlayer
         height={100}
         waveColor="gray"
         url={link}
@@ -24,8 +25,9 @@ const AudioWave = ({ link }: { link: string }) => {
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
       />
+     </div>
 
-      <button onClick={onPlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+      <button className="bg-black text-white mx-auto py-2 px-3 rounded mt-4" onClick={onPlayPause}>{isPlaying ? "Pause" : "Play"}</button>
     </>
   );
 };

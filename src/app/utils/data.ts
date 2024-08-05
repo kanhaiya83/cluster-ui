@@ -190,7 +190,332 @@ export const data: DataItem[] = [
       "https://inference.clusterprotocol.ai/generate/google/gemma-2b-it",
   },
   {
-    title: "sdxl",
+    title: "Mistral-7B-Instruct-v0.3",
+    owner: "mistralai",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_cover_image/f1e31126-4ba2-441e-a62f-80f492b5d403/gemma.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+        required: true,
+      },
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/mistralai/Mistral-7B-Instruct-v0.3",
+  },
+  {
+    title: "opt-125m",
+    owner: "facebook",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_cover_image/f1e31126-4ba2-441e-a62f-80f492b5d403/gemma.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+        required: true,
+      },
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/facebook/opt-125m",
+  },
+  {
+    title: "gpt2-large",
+    owner: "openai-community",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_cover_image/f1e31126-4ba2-441e-a62f-80f492b5d403/gemma.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+        required: true,
+      },
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/openai-community/gpt2-large",
+  },
+  {
+    title: "phi-2",
+    owner: "microsoft",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_cover_image/f1e31126-4ba2-441e-a62f-80f492b5d403/gemma.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+        required: true,
+      },
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/microsoft/phi-2",
+  },
+  {
+    title: "gemma-7b",
+    owner: "google",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_cover_image/f1e31126-4ba2-441e-a62f-80f492b5d403/gemma.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"Johnny has 8 billion parameters. His friend Tommy has 70 billion parameters. What does this mean when it comes to speed?",
+        required: true,
+      },
+      {
+        type: "integer",
+        id: "max_tokens",
+        title: "Max Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 256,
+      },
+      {
+        type: "number",
+        id: "temperature",
+        title: "Temperature",
+        min: 0,
+        max: 5,
+        default_value: 0.7,
+      },
+      {
+        type: "number",
+        id: "top_p",
+        title: "top_p",
+        min: 0,
+        max: 1,
+        default_value: 0.95,
+      },
+
+      {
+        type: "integer",
+        id: "top_k",
+        title: "top_k",
+        min: -1,
+        max: 1000,
+        default_value: -1,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/google/gemma-7b",
+  },
+
+
+
+  {
+    title: "suno",
+    owner: "bark",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_featured_image/831172d8-5976-415b-b8da-8462c9368b7e/fofr_dog.jpg",
+    github_link: "https://github.com/replicate/cog-sdxl",
+    license_link:
+      "https://github.com/Stability-AI/generative-models/blob/main/model_licenses/LICENSE-SDXL1.0",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"How are you doing",
+        required: true,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/bark/suno",
+      default_output:[
+        "https://s3-ap-south-1.amazonaws.com/assets-clusterprotocol/output-WnvhdXHuH4JT.wav"
+      ]
+  },
+  {
+    title: "sdxl-turbo",
+    owner: "stabilityai",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_featured_image/9065f9e3-40da-4742-8cb8-adfa8e794c0d/sdxl_cover.jpg",
+    github_link: "https://github.com/replicate/cog-sdxl",
+    license_link:
+      "https://github.com/Stability-AI/generative-models/blob/main/model_licenses/LICENSE-SDXL1.0",
+    inputParams: [
+      {
+        type: "string",
+        id: "prompt",
+        title: "Your Prompt",
+        default_value:"a bird on a tv",
+        required: true,
+      },
+    ],
+    inference_url:
+      "https://inference.clusterprotocol.ai/generate/stabilityai/sdxl-turbo",
+      default_output:[
+        "https://s3-ap-south-1.amazonaws.com/assets-clusterprotocol/outputA7M8fx8ugqAM.png"
+      ]
+  },
+
+
+  {
+    title: "sdxl-base",
     owner: "stabilityai",
     private: false,
     total_runs: 0,
@@ -244,117 +569,35 @@ export const data: DataItem[] = [
       // "http://localhost:8000/generate/lucataco/moondream2",
       "https://inference.clusterprotocol.ai/generate/lucataco/moondream2",
   },
-  // {
-  //     "title": "model-beta",
-  //     "owner": "meta",
-  //     "private": false,
-  //     "total_runs": 654321,
-  //     "cold_boot_status": "cold",
-  //     "github_link": "https://github.com/meta/model-beta",
-  //     "license_link": "https://meta.com/model-beta/license",
-  //     "inputParams": [
-  //         {
-  //             "type": "string",
-  //             "id": "prompt",
-  //             "title": "Your Prompt",
-  //             "required": true,
-  //             "min": 0
-  //         },
-  //         {
-  //             "type": "string",
-  //             "id": "context",
-  //             "title": "Context"
-  //         },
-  //         {
-  //             "type": "integer",
-  //             "id": "max_length",
-  //             "title": "Max Length",
-  //             "max": 1000,
-  //             "min": 200
-  //         },
-  //         {
-  //             "type": "number",
-  //             "id": "top_p",
-  //             "title": "Top P",
-  //             "min": 0,
-  //             "max": 1
-  //         }
-  //     ]
-  // },
-  // {
-  //     "title": "model-gamma",
-  //     "owner": "meta",
-  //     "private": false,
-  //     "total_runs": 789012,
-  //     "cold_boot_status": "warm",
-  //     "github_link": "https://github.com/meta/model-gamma",
-  //     "license_link": "https://meta.com/model-gamma/license",
-  //     "inputParams": [
-  //         {
-  //             "type": "string",
-  //             "id": "query",
-  //             "title": "Query",
-  //             "required": true,
-  //             "min": 0
-  //         },
-  //         {
-  //             "type": "string",
-  //             "id": "background_info",
-  //             "title": "Background Info"
-  //         },
-  //         {
-  //             "type": "integer",
-  //             "id": "max_tokens",
-  //             "title": "Max Tokens",
-  //             "min": 10,
-  //             "max": 789
-  //         },
-  //         {
-  //             "type": "number",
-  //             "id": "top_k",
-  //             "title": "Top K",
-  //             "min": 0,
-  //             "max": 100
-  //         }
-  //     ]
-  // },
-  // {
-  //     "title": "model-delta",
-  //     "owner": "meta",
-  //     "private": false,
-  //     "total_runs": 345678,
-  //     "cold_boot_status": "cold",
-  //     "github_link": "https://github.com/meta/model-delta",
-  //     "license_link": "https://meta.com/model-delta/license",
-  //     "inputParams": [
-  //         {
-  //             "type": "string",
-  //             "id": "input_text",
-  //             "title": "Input Text",
-  //             "required": true,
-  //             "min": 0
-  //         },
-  //         {
-  //             "type": "string",
-  //             "id": "config",
-  //             "title": "Configuration"
-  //         },
-  //         {
-  //             "type": "integer",
-  //             "id": "max_response_length",
-  //             "title": "Max Response Length",
-  //             "min": 102,
-  //             "max": 500
-  //         },
-  //         {
-  //             "type": "number",
-  //             "id": "frequency_penalty",
-  //             "title": "Frequency Penalty",
-  //             "min": 0,
-  //             "max": 2
-  //         }
-  //     ]
-  // }
+  {
+    title: "blip-image-captioning-large",
+    owner: "Salesforce",
+    private: false,
+    total_runs: 0,
+    cold_boot_status: "warm",
+    display_image:"https://tjzk.replicate.delivery/models_models_featured_image/b59b459c-c475-414f-ba67-c424a7e6e6ca/demo.jpg",
+    github_link: "https://github.com/chenxwh/cog-gemma",
+    license_link: "https://huggingface.co/models?license=license%3Aother",
+    inputParams: [
+      // {
+      //   type: "string",
+      //   id: "prompt",
+      //   title: "Your Prompt",
+      //   default_value:"Describe the image",
+      //   required: true,
+      // },
+      {
+        type: "file",
+        id: "image",
+        title: "Your Image",
+        required: true,
+      },
+
+    ],
+    inference_url:
+      // "http://localhost:8000/generate/lucataco/moondream2",
+      "https://inference.clusterprotocol.ai/generate/Salesforce/blip-image-captioning-large",
+  },
 ];
 
 export const responseData = [
