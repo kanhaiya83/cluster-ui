@@ -94,7 +94,7 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
     // };
     // fetchData();
     setOutputData(defaultData)
-  }, [model]);
+  }, [model?.title]);
   const parsedOutput = outputData.output[0];
   return (
     <div className="px-24 mt-10">
@@ -117,9 +117,9 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
               /> */}
             </div>
           </div>
-          <div className="mt-1 text-base leading-6 text-black max-md:max-w-full">
+          {/* <div className="mt-1 text-base leading-6 text-black max-md:max-w-full">
             Create videos from illustrated input images
-          </div>
+          </div> */}
           <div className="flex flex-wrap gap-3 content-center pr-20 mt-3 text-sm leading-5 text-black max-md:pr-5">
             <div className="flex gap-1.5 px-2.5 py-1 text-green-700 whitespace-nowrap bg-green-50 rounded-full shadow-sm">
               <img
@@ -145,7 +145,7 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
               />
               <div>{formatNumber(model?.total_runs || 0)} runs</div>
             </div> */}
-            <div className="flex gap-1.5 py-0.5 my-auto whitespace-nowrap leading-[146%]">
+            {/* <div className="flex gap-1.5 py-0.5 my-auto whitespace-nowrap leading-[146%]">
               <img
                 loading="lazy"
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/c103518ccc9c1627cebb6292a3fdb64fed590ac9ba28dd7c780710bee155e9aa?"
@@ -172,7 +172,7 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
               >
                 License
               </Link>
-            </div>
+            </div> */}
             {/* <div className="flex gap-1.5 py-0.5 my-auto whitespace-nowrap leading-[146%]">
               <img
                 loading="lazy"
