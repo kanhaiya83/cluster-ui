@@ -542,7 +542,7 @@ export const data: DataItem[] = [
         type: "string",
         id: "prompt",
         title: "Your Prompt",
-        default_value:"How are you doing",
+        default_value:"[clears throat] How are you doing with your life [laughs]",
         required: true,
       },
     ],
