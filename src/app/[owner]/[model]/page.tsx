@@ -82,7 +82,7 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
   if (model?.default_output) {
     defaultData.output = model?.default_output;
   }
-  const [outputData, setOutputData] = useState<OutputData>(defaultData);
+  const [outputData, setOutputData] = useState<OutputData | null>();
   useEffect(() => {
     // const fetchData = async () => {
     //   setLoading(true);
@@ -93,9 +93,8 @@ const page = ({ params }: { params: { owner: string; model: string } }) => {
     //   setLoading(false);
     // };
     // fetchData();
-    setOutputData(defaultData)
+    setOutputData(null)
   }, [model?.title]);
-  const parsedOutput = outputData.output[0];
   return (
     <div className="px-24 mt-10">
       <div className="flex-1 flex gap-5 self-stretch pb-6 max-md:flex-wrap">
@@ -248,8 +247,11 @@ const OutputViewerContainer = ({
   outputData,
 }: {
   activeTab: "json" | "preview";
-  outputData: OutputData;
+  outputData?: OutputData;
 }) => {
+  if(!outputData){
+    return <></>
+  }
   return (
     <>
       {activeTab == "preview" ? (

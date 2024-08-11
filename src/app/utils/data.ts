@@ -55,6 +55,14 @@ export const data: DataItem[] = [
         default_value: 256,
       },
       {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
+      },
+      {
         type: "number",
         id: "temperature",
         title: "Temperature",
@@ -109,6 +117,14 @@ export const data: DataItem[] = [
         default_value: 256,
       },
       {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
+      },
+      {
         type: "number",
         id: "temperature",
         title: "Temperature",
@@ -160,6 +176,14 @@ export const data: DataItem[] = [
         min: 1,
         max: 1000,
         default_value: 256,
+      },
+      {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
       },
       {
         type: "number",
@@ -216,6 +240,14 @@ export const data: DataItem[] = [
         default_value: 256,
       },
       {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
+      },
+      {
         type: "number",
         id: "temperature",
         title: "Temperature",
@@ -268,6 +300,14 @@ export const data: DataItem[] = [
         min: 1,
         max: 1000,
         default_value: 256,
+      },
+      {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
       },
       {
         type: "number",
@@ -324,6 +364,14 @@ export const data: DataItem[] = [
         default_value: 256,
       },
       {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
+      },
+      {
         type: "number",
         id: "temperature",
         title: "Temperature",
@@ -378,6 +426,14 @@ export const data: DataItem[] = [
         default_value: 256,
       },
       {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
+      },
+      {
         type: "number",
         id: "temperature",
         title: "Temperature",
@@ -430,6 +486,14 @@ export const data: DataItem[] = [
         min: 1,
         max: 1000,
         default_value: 256,
+      },
+      {
+        type: "integer",
+        id: "min_tokens",
+        title: "Min Tokens",
+        min: 1,
+        max: 1000,
+        default_value: 50,
       },
       {
         type: "number",
