@@ -528,8 +528,8 @@ export const data: DataItem[] = [
 
 
   {
-    title: "suno",
-    owner: "bark",
+    title: "bark",
+    owner: "suno-ai",
     private: false,
     total_runs: 0,
     cold_boot_status: "warm",
@@ -542,7 +542,7 @@ export const data: DataItem[] = [
         type: "string",
         id: "prompt",
         title: "Your Prompt",
-        default_value:"[clears throat] How are you doing with your life [laughs]",
+        default_value:"How are you doing with your life [laughs]",
         required: true,
       },
     ],
